@@ -391,6 +391,27 @@ html,
   background-image: none !important;
 }
 
+/* Center the action icons in the active server header. */
+.ts-server-header .tsv-view-accessory button,
+.ts-server-header .tsv-view-accessory .ts-button,
+.ts-server-header .tsv-view-accessory .tsv-button,
+.ts-server-header .tsv-view-accessory [class*="button"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1 !important;
+}
+
+.ts-server-header .tsv-view-accessory button svg,
+.ts-server-header .tsv-view-accessory .ts-button svg,
+.ts-server-header .tsv-view-accessory .tsv-button svg,
+.ts-server-header .tsv-view-accessory [class*="button"] svg {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
 /* Compact chat input button spacing and padding. */
 .ts-chat-input-container button,
 .ts-chat-input-container .ts-button,
@@ -408,4 +429,21 @@ html,
 .ts-chat-input-container button svg {
   width: 16px !important;
   height: 16px !important;
+}
+
+/* Center icons in navigation sidebar buttons. */
+.tsv-sidebar button,
+.tsv-sidebar [class*="button"],
+.ts-sidebar button,
+.ts-sidebar [class*="button"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.tsv-sidebar button svg,
+.ts-sidebar button svg,
+.tsv-sidebar [class*="button"] svg,
+.ts-sidebar [class*="button"] svg {
+  margin: 0 auto !important;
 }
