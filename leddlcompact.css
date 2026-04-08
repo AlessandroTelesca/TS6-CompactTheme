@@ -1,7 +1,28 @@
-/* Structural-only compact tree layout.
-   Intentionally no color, background, border-color, or shadow changes. */
+/* Compact tree layout with black/gray palette and tight channel spacing. */
 
 :root {
+  --leddlcompact-base-bg: #121212;
+  --leddlcompact-panel-bg: #181818;
+  --leddlcompact-muted-bg: #222222;
+  --leddlcompact-text: #d7d7d7;
+  --leddlcompact-text-muted: #8a8a8a;
+
+  /* TeamSpeak palette overrides (black/gray). */
+  --ts-primary-background: var(--leddlcompact-base-bg);
+  --tsv-bg: var(--leddlcompact-panel-bg);
+  --tsv-header-bg: #141414;
+  --tsv-shaded-bg: var(--leddlcompact-muted-bg);
+  --tsv-contrast-bg: #0a0a0a;
+  --ts-new-header-bg: #101010;
+  --tsv-side-bar-bg-gradient-bottom: var(--leddlcompact-panel-bg);
+  --ts-tree-channel-bg-start: var(--leddlcompact-panel-bg);
+  --ts-tree-channel-bg-end: var(--leddlcompact-panel-bg);
+  --tsv-font-color: var(--leddlcompact-text);
+  --tsv-font-subtitle-color: var(--leddlcompact-text-muted);
+  --tsv-tint: #8f8f8f;
+  --tsv-tint2: #8f8f8f;
+  --tsv-icon-tint: #9a9a9a;
+
   --leddlcompact-row-height: 20px;
   --leddlcompact-row-height-small: 18px;
   --leddlcompact-row-height-minimal: 14px;
@@ -20,6 +41,9 @@
   --tsv-row-height: 20px !important;
   --tsv-row-height-small: 18px !important;
   --tsv-row-height-minimal: 14px !important;
+
+  /* Keep channel and spacer bars visually flush with identical width. */
+  --leddlcompact-tree-row-inset: 4px;
 }
 
 .ts-server-tree-scroller .tsv-virtual-list-item,
@@ -152,6 +176,37 @@
 .ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
 .ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full {
   border-radius: 0 !important;
+}
+
+.ts-server-tree-item-leaf.channel .tsv-item-highlight,
+.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full,
+.ts-server-tree-item-leaf.spacer .tsv-item-highlight,
+.ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-no-image,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image-full {
+  left: var(--leddlcompact-tree-row-inset) !important;
+  right: var(--leddlcompact-tree-row-inset) !important;
+}
+
+.ts-server-tree-item-leaf.channel,
+.ts-server-tree-item-leaf.spacer,
+.ts-server-tree-item-leaf.channel .tsv-item-highlight,
+.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full,
+.ts-server-tree-item-leaf.spacer .tsv-item-highlight,
+.ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-no-image,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image,
+.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image-full {
+  background: var(--tsv-bg) !important;
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
 .ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item + .tsv-item,
