@@ -1,0 +1,192 @@
+:root {
+  color-scheme: dark;
+  --ts-bg: #0b1020;
+  --ts-bg-elevated: #11172a;
+  --ts-bg-surface: #161d31;
+  --ts-bg-soft: #1d2640;
+  --ts-border: rgba(168, 183, 214, 0.14);
+  --ts-text: #eef2ff;
+  --ts-text-muted: #a7b3d1;
+  --ts-accent: #ffb347;
+  --ts-accent-strong: #ff8f1f;
+  --ts-accent-alt: #55d6be;
+  --ts-danger: #ff6b7a;
+  --ts-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  --ts-radius: 14px;
+  --ts-radius-sm: 10px;
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 179, 71, 0.16), transparent 32%),
+    radial-gradient(circle at top right, rgba(85, 214, 190, 0.14), transparent 28%),
+    linear-gradient(180deg, #0a0f1d 0%, #0e1324 55%, #0a0d17 100%);
+  color: var(--ts-text);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Segoe UI", "Segoe UI Variable", sans-serif;
+}
+
+::selection {
+  background: rgba(255, 179, 71, 0.3);
+  color: var(--ts-text);
+}
+
+* {
+  scrollbar-color: rgba(255, 179, 71, 0.45) rgba(255, 255, 255, 0.06);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 179, 71, 0.72), rgba(85, 214, 190, 0.72));
+  border-radius: 999px;
+  border: 3px solid rgba(10, 15, 29, 0.9);
+}
+
+button,
+input,
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ts-text);
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius-sm);
+  transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease;
+}
+
+button:hover,
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: rgba(255, 179, 71, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(255, 179, 71, 0.8);
+  outline-offset: 2px;
+}
+
+button {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+button.primary,
+button[type="submit"],
+button[data-variant="primary"] {
+  background: linear-gradient(180deg, rgba(255, 179, 71, 0.95), rgba(255, 143, 31, 0.92));
+  color: #1b1206;
+  border-color: rgba(255, 179, 71, 0.35);
+}
+
+button.primary:hover,
+button[type="submit"]:hover,
+button[data-variant="primary"]:hover {
+  background: linear-gradient(180deg, rgba(255, 196, 112, 0.98), rgba(255, 143, 31, 0.98));
+}
+
+a {
+  color: var(--ts-accent-alt);
+  text-decoration-color: rgba(85, 214, 190, 0.45);
+}
+
+a:hover {
+  color: #8bf0db;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid rgba(168, 183, 214, 0.12);
+}
+
+.card,
+.panel,
+section,
+article,
+[role="region"],
+[role="dialog"] {
+  background: linear-gradient(180deg, rgba(17, 23, 42, 0.96), rgba(12, 17, 32, 0.96));
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius);
+  box-shadow: var(--ts-shadow);
+}
+
+.muted,
+.secondary,
+small,
+label,
+[aria-label*="muted" i] {
+  color: var(--ts-text-muted);
+}
+
+.badge,
+.tag,
+.chip,
+.pill {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ts-text);
+  border: 1px solid rgba(168, 183, 214, 0.12);
+  border-radius: 999px;
+}
+
+.alert,
+.danger,
+.error {
+  background: rgba(255, 107, 122, 0.12);
+  color: #ffd6db;
+  border-color: rgba(255, 107, 122, 0.28);
+}
+
+.success,
+.online {
+  background: rgba(85, 214, 190, 0.12);
+  color: #cffcf4;
+  border-color: rgba(85, 214, 190, 0.28);
+}
+
+.nav,
+.sidebar,
+.toolbar,
+header,
+footer {
+  background: linear-gradient(180deg, rgba(10, 15, 29, 0.96), rgba(8, 12, 23, 0.9));
+  border-color: rgba(168, 183, 214, 0.1);
+}
+
+.selected,
+[aria-selected="true"],
+.active {
+  background: linear-gradient(180deg, rgba(255, 179, 71, 0.18), rgba(85, 214, 190, 0.1));
+  color: var(--ts-text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(167, 179, 209, 0.55);
+}
+
+code,
+pre {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffe7c0;
+  border: 1px solid rgba(168, 183, 214, 0.1);
+  border-radius: 10px;
+}

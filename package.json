@@ -1,0 +1,23 @@
+{
+  "name": "leddlCompact",
+  "description": "A compact dark TeamSpeak 5 theme with amber and teal accents.",
+  "version": "1.0.0",
+  "identifier": "com.arcte.leddlcompact",
+  "engines": {
+    "teamspeak": 1
+  },
+  "repository": "https://github.com/arcte/nocturne",
+  "image": "preview.svg",
+  "license": "MIT",
+  "author": "arcte",
+  "content": {
+    "themes": [
+      {
+        "name": "leddlCompact",
+        "source": "nocturne.css",
+        "image": "preview.svg",
+        "apiVersion": 1
+      }
+    ]
+  }
+}
