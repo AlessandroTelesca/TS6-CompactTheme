@@ -1,449 +1,258 @@
-/* Compact tree layout with black/gray palette and tight channel spacing. */
-
 :root {
-  --leddlcompact-base-bg: #141414;
-  --leddlcompact-panel-bg: #1e1e1e;
-  --leddlcompact-muted-bg: #242424;
-  --leddlcompact-text: #d7d7d7;
-  --leddlcompact-text-muted: #8a8a8a;
-
-  /* TeamSpeak palette overrides (black/gray). */
-  --ts-primary-background: #141414 !important;
-  --tsv-bg: #1e1e1e !important;
-  --tsv-header-bg: #161616 !important;
-  --tsv-shaded-bg: #242424 !important;
-  --tsv-contrast-bg: #0d0d0d !important;
-  --ts-new-header-bg: #121212 !important;
-  --tsv-deviant-bg: #1a1a1a !important;
-
-  --tsv-main-bg-gradient-start: #141414 !important;
-  --tsv-main-bg-gradient-end: #1e1e1e !important;
-  --tsv-side-bar-bg-gradient-bottom: #161616 !important;
-  --card-background: #222222 !important;
-  --tsv-servertree-bg-gradient: #1e1e1e !important;
-
-  --ts-tree-channel-bg-start: #1e1e1e !important;
-  --ts-tree-channel-bg-end: #222222 !important;
-  --ts-tree-badges-bg: #2a2a2a !important;
-  --spacer-bg-gradient-from: #1e1e1e !important;
-  --spacer-bg-gradient-to: #1e1e1e !important;
-
-  --ts-chat-system-message-bg: #111111 !important;
-  --tsv-chat-widget-bg: #1a1a1a !important;
-  --tsv-chat-remote-bg: #333333 !important;
-  --tsv-chat-self-bg: #444444 !important;
-  --tsv-chat-remote-font-color: #e0e0e0 !important;
-  --tsv-chat-self-font-color: #ffffff !important;
-
-  --tsv-font-color: var(--leddlcompact-text);
-  --tsv-font-subtitle-color: var(--leddlcompact-text-muted);
-  --tsv-tint: #8f8f8f;
-  --tsv-tint2: #8f8f8f;
-  --tsv-icon-tint: #9a9a9a;
-
-  --leddlcompact-row-height: 20px;
-  --leddlcompact-row-height-small: 18px;
-  --leddlcompact-row-height-minimal: 14px;
-  --leddlcompact-row-overlap: 0px;
-
-  /* Virtual-list sizing values read by TeamSpeak layout code. */
-  --channel-height: 20px !important;
-  --channel-spacing: 0px !important;
-  --tsv-padding-v: 1px !important;
-  --tsv-padding-v-small: 0px !important;
-  --tsv-padding-v-minimal: 0px !important;
-  --ts-tree-channel-height-default: 20px !important;
-  --ts-tree-client-height-default: 20px !important;
-  --ts-tree-client-height-compact: 20px !important;
-  --ts-tree-spacer-height-default: 20px !important;
-  --tsv-row-height: 20px !important;
-  --tsv-row-height-small: 18px !important;
-  --tsv-row-height-minimal: 14px !important;
-
-  /* Keep channel and spacer bars visually flush with identical width. */
-  --leddlcompact-tree-row-inset: 4px;
+    /* --- Premium Greyscale Color System --- */
+    --ts-primary-background: #141414 !important;
+    --tsv-bg: #1e1e1e !important;
+    --tsv-header-bg: #161616 !important;
+    --tsv-shaded-bg: #242424 !important;
+    --tsv-contrast-bg: #101010 !important;
+    --ts-new-header-bg: #121212 !important;
+    --tsv-deviant-bg: #1a1a1a !important;
+    
+    --tsv-main-bg-gradient-start: #141414 !important;
+    --tsv-main-bg-gradient-end: #1e1e1e !important;
+    --tsv-side-bar-bg-gradient-bottom: #161616 !important;
+    --card-background: #222222 !important;
+    --tsv-servertree-bg-gradient: linear-gradient(25deg, #141414 0%, #1e1e1e 60%) !important;
+    
+    --ts-tree-channel-bg-start: transparent !important;
+    --ts-tree-channel-bg-end: transparent !important;
+    --spacer-bg-gradient-from: transparent !important;
+    --spacer-bg-gradient-to: transparent !important;
+    
+    --ts-chat-system-message-bg: #111111 !important;
+    --tsv-chat-widget-bg: #1a1a1a !important;
+    --tsv-chat-remote-bg: #333333 !important;
+    --tsv-chat-self-bg: #444444 !important;
+    --tsv-chat-remote-font-color: #e0e0e0 !important;
+    --tsv-chat-self-font-color: #ffffff !important;
+    
+    --tsv-separation-border-color: #2a2a2a !important;
+    --tsv-separation-border-strong-color: #333333 !important;
+    
+    /* --- Blue Highlights --- */
+    --tsv-icon-tint: #1c82cc !important;
+    --tsv-tint: #1c82cc !important;
+    --tsv-tint2: #1c82cc !important;
+    --tsv-highlight-color: #1c82cc !important;
+    --ts-primary-accent-color: #1c82cc !important;
+    
+    --tsv-font-color: #dedede !important;
+    --tsv-font-subtitle-color: #888888 !important;
+    
+    --tsv-shaded-bg-selection: #1c82cc44 !important;
+    --highlight-outline-color: #1c82cc !important;
 }
 
-.ts-server-tree-scroller .tsv-virtual-list-item,
-.ts-server-tree-wrapper .tsv-virtual-list-item {
-  height: var(--ts-tree-channel-height-default) !important;
-  min-height: var(--ts-tree-channel-height-default) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  align-items: stretch !important;
+/* Bright URLs */
+a,
+a span,
+[class*="chat-message"] a {
+    color: #64b5f6 !important;
+    /* Bright light blue */
+    text-decoration: none !important;
 }
 
-.ts-server-tree-item-leaf,
-.ts-server-tree-item-leaf.channel,
-.ts-server-tree-item-leaf.client,
-.ts-server-tree-item-leaf.spacer {
-  height: var(--ts-tree-channel-height-default) !important;
-  min-height: var(--ts-tree-channel-height-default) !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+a:hover {
+    text-decoration: underline !important;
 }
 
-.ts-server-tree-item-node-content,
-.ts-server-tree-item-leaf .tsv-item-container,
-.ts-server-tree-item-leaf .tsv-item {
-  min-height: var(--ts-tree-channel-height-default) !important;
-  height: var(--ts-tree-channel-height-default) !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+/* --- Context & Connection Menu Styling --- */
+.tsv-tool-menu,
+.tsv-popup-container,
+[class*="tsv-tool-menu"],
+.ts-server-connection-stats-menu,
+.ts-server-events-menu,
+.ts-presence-menu {
+    background: #222222 !important;
+    border: 1px solid #1c82cc !important;
+    /* Uniform Blue Outline */
+    border-radius: 6px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
 }
 
-.ts-sidebar .ts-bookmark-list,
-.ts-server-tree,
-.tsv-server-tree,
-.tsv-list {
-  --tsv-row-height: var(--leddlcompact-row-height);
-  --tsv-row-height-small: var(--leddlcompact-row-height-small);
-  --tsv-row-height-minimal: var(--leddlcompact-row-height-minimal);
+/* --- Internal Property "Cards" (Connection Info) --- */
+.ts-connection-info-additional-properties {
+    background: transparent !important;
+    padding: 8px !important;
 }
 
-.ts-sidebar .ts-bookmark-list ul,
-.ts-server-tree ul,
-.tsv-server-tree ul,
-.tsv-list ul {
-  margin: 0;
-  padding: 0;
+.ts-connection-info-property {
+    background: #0d0d0d !important;
+    /* Darker interior cards */
+    border: 1px solid #1c82cc44 !important;
+    /* Subtle blue outline for internal elements */
+    border-radius: 4px !important;
+    margin: 4px 0 !important;
+    padding: 4px 8px !important;
 }
 
-.ts-sidebar .ts-bookmark-list li,
-.ts-server-tree li,
-.tsv-server-tree li,
-.tsv-list li,
-.ts-server-tree .channel,
-.ts-server-tree .client,
-.tsv-server-tree .channel,
-.tsv-server-tree .client {
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  min-height: var(--tsv-row-height);
+/* --- Presence & Profile Menu Greyscale --- */
+.ts-presence-menu-profile,
+.ts-presence-menu .tsv-item-container,
+.ts-presence-menu li {
+    background: transparent !important;
 }
 
-.ts-server-tree .ts-server-tree-item,
-.ts-server-tree .ts-server-tree-item-leaf,
-.tsv-server-tree .ts-server-tree-item,
-.tsv-server-tree .ts-server-tree-item-leaf,
-.ts-server-tree .tsv-item,
-.tsv-server-tree .tsv-item,
-.ts-server-tree .tsv-item-container,
-.tsv-server-tree .tsv-item-container {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+/* --- Informative Top-Bar Buttons (Ping/Events) --- */
+.ts-server-informative-buttons .tsv-tool-button,
+.tsv-central-toolbar-buttons .tsv-tool-button,
+.ts-connection-info-button {
+    background: #22222266 !important;
+    /* Semi-transparent greyscale */
 }
 
-.ts-server-tree .ts-server-tree-item + .ts-server-tree-item,
-.tsv-server-tree .ts-server-tree-item + .ts-server-tree-item,
-.ts-server-tree .ts-server-tree-item-leaf + .ts-server-tree-item-leaf,
-.tsv-server-tree .ts-server-tree-item-leaf + .ts-server-tree-item-leaf,
-.ts-server-tree li + li,
-.tsv-server-tree li + li,
-.ts-server-tree .channel + .channel,
-.ts-server-tree .channel + .client,
-.ts-server-tree .client + .channel,
-.ts-server-tree .client + .client,
-.tsv-server-tree .channel + .channel,
-.tsv-server-tree .channel + .client,
-.tsv-server-tree .client + .channel,
-.tsv-server-tree .client + .client,
-.ts-server-tree .tsv-item + .tsv-item,
-.tsv-server-tree .tsv-item + .tsv-item {
-  margin-top: calc(var(--leddlcompact-row-overlap) * -1) !important;
+/* Remove quality-based blue tints */
+.bar1-quality1,
+.bar2-quality1,
+.quality1 {
+    background-color: transparent !important;
 }
 
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item:not(:last-child),
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group.has-children,
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group .tsv-item:not(:first-child),
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .ts-server-tree-item-leaf {
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
+/* --- Activity Sidebar "Servers" Background --- */
+.tsv-activity-group,
+.tsv-sidebar-tab-header,
+.tsv-sidebar-tab-header .tsv-item-container {
+    background: transparent !important;
 }
 
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group.has-children {
-  padding-bottom: 0 !important;
+.tsv-activity-group-list {
+    background: #16161644 !important;
+    border-radius: 6px !important;
 }
 
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item {
-  min-height: var(--ts-tree-channel-height-default) !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+/* Fix for blue sections in Connection Info */
+.ts-graph-layer-background {
+    fill: #0a0a0a !important;
 }
 
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.channel .tsv-item-highlight,
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.client .tsv-item-highlight,
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.client .tsv-item-highlight-extra,
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.spacer .tsv-item-highlight,
-.ts-server-tree-wrapper .ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra {
-  top: 0 !important;
-  bottom: 0 !important;
+/* --- Roles and Badges in Tree --- */
+.ts-server-tree-group-icon,
+.server-group-icon,
+.ts-server-tree-inactive-status__item,
+.ts-server-tree-active-status {
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
-.ts-server-tree-wrapper .ts-server-tree-channel-info,
-.ts-server-tree-wrapper .ts-server-tree-client-info {
-  margin-bottom: 0 !important;
+/* --- Badge Showcase Area --- */
+.ts-account-badges-area,
+.ts-account-badges-icon-container,
+.ts-account-badges-active-area {
+    background: #1a1a1a !important;
+    /* Neutral grey background slots */
 }
 
-/* Keep compact spacing, but make channel rows square (no pill corners). */
-.ts-server-tree-item-leaf.channel .tsv-item-highlight,
-.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full {
-  border-radius: 0 !important;
+/* --- Overriding Blue Hardcoded SVGs --- */
+/* Target server icon paths that have hardcoded light blue fills */
+svg.tsv-icon-server path,
+svg.tsv-icon-client-detailed-normal circle,
+svg.tsv-icon-portrait circle {
+    fill: #444 !important;
+    /* Greyscale icons */
 }
 
-.ts-server-tree-item-leaf.channel .tsv-item-highlight,
-.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full,
-.ts-server-tree-item-leaf.spacer .tsv-item-highlight,
-.ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-no-image,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image-full {
-  left: var(--leddlcompact-tree-row-inset) !important;
-  right: var(--leddlcompact-tree-row-inset) !important;
+/* Specifically target the color from the user snippet */
+path[style*="fill:rgb(226,236,247)"],
+path[style*="fill: rgb(226, 236, 247)"],
+[style*="fill:url(#"] stop {
+    stop-color: #333 !important;
+    /* Desaturate gradients */
 }
 
-.ts-server-tree-item-leaf.channel,
-.ts-server-tree-item-leaf.spacer,
-.ts-server-tree-item-leaf.channel .tsv-item-highlight,
-.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
-.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full,
-.ts-server-tree-item-leaf.spacer .tsv-item-highlight,
-.ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-no-image,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image,
-.ts-server-tree-item-leaf.spacer .ts-server-tree-item-background-image-full {
-  background: var(--tsv-bg) !important;
-  background-image: none !important;
-  box-shadow: none !important;
+/* --- Activity List Fixes --- */
+.tsv-item-group,
+.tsv-activity-group-list {
+    background: transparent !important;
 }
 
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item + .tsv-item,
-.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .ts-server-tree-item-leaf + .ts-server-tree-item-leaf {
-  margin-top: calc(var(--leddlcompact-row-overlap) * -1) !important;
+/* Stronger override for server items in activity list */
+.tsv-activity-group-list .tsv-item-container {
+    background: #1a1a1a !important;
+    border-radius: 4px !important;
 }
 
-.ts-server-tree .tsv-item,
-.tsv-server-tree .tsv-item,
-.ts-sidebar .ts-bookmark-list .tsv-item,
-.tsv-list .tsv-item,
-.ts-server-tree-item-leaf .tsv-item {
-  min-height: var(--tsv-row-height);
-  padding-left: 8px;
-  padding-right: 8px;
+/* --- Remove Chat Bubble Triangles --- */
+.ts-chat-room-event-bubble:before,
+[class*="ts-chat-room-event-bubble"]::before,
+[class*="ts-chat-room-event-bubble"]::after {
+    display: none !important;
 }
 
-.ts-server-tree .tsv-item-container,
-.tsv-server-tree .tsv-item-container,
-.ts-sidebar .ts-bookmark-list .tsv-item-container,
-.tsv-list .tsv-item-container,
-.ts-server-tree-item-leaf .tsv-item-container {
-  min-height: var(--tsv-row-height);
-  padding-top: 0;
-  padding-bottom: 0;
+/* --- Header & Bar Background Fixes --- */
+.tsv-header-bar-below-tools,
+.tsv-content-header-bar,
+.tsv-bar.tsv-tabs-slim,
+.tsv-bar.tsv-tabs {
+    background: #1a1a1a !important;
 }
 
-.ts-server-tree .tsv-item-text,
-.tsv-server-tree .tsv-item-text,
-.ts-sidebar .ts-bookmark-list .tsv-item-text,
-.tsv-list .tsv-item-text,
-.ts-server-tree-item-leaf .tsv-item-text {
-  font-size: 12.5px;
-  line-height: 1.05;
-  margin-left: 6px;
+.tsv-tabs-slim:before {
+    background: #101010 !important;
+    border: 1px solid #2a2a2a !important;
 }
 
-.ts-server-tree .tsv-item-text-detail,
-.tsv-server-tree .tsv-item-text-detail,
-.ts-sidebar .ts-bookmark-list .tsv-item-text-detail,
-.tsv-list .tsv-item-text-detail,
-.ts-server-tree-item-leaf .tsv-item-text-detail {
-  font-size: 11px;
-  margin-left: 4px;
+/* Fix server banner/view backgrounds */
+.tsv-view-background {
+    background-color: #141414 !important;
+    filter: grayscale(100%) brightness(0.7) !important;
 }
 
-.ts-server-tree .tsv-item-highlight,
-.tsv-server-tree .tsv-item-highlight,
-.ts-sidebar .ts-bookmark-list .tsv-item-highlight,
-.tsv-list .tsv-item-highlight,
-.ts-server-tree-item-leaf .tsv-item-highlight {
-  left: 4px;
-  right: 4px;
-  top: 1px;
-  bottom: 1px;
-  border-radius: 2px;
+/* --- Extreme Compactness System --- */
+:root {
+    --channel-height: 22px !important;
+    --tsv-padding-v: 4px !important;
+    --channel-spacing: 4px !important;
+    --ts-tree-channel-height-default: 26px !important;
+    --tsv-row-height: 24px !important;
 }
 
-.ts-server-tree .ts-expander,
-.tsv-server-tree .ts-expander,
-.ts-sidebar .ts-bookmark-list .ts-expander,
-.tsv-list .ts-expander {
-  margin: 1px 8px;
-  min-height: 13px;
+.ts-server-tree-scroller .tsv-virtual-list-item {
+    height: 26px !important;
+    align-items: center !important;
 }
 
-.ts-server-tree .ts-expander > span,
-.tsv-server-tree .ts-expander > span,
-.ts-sidebar .ts-bookmark-list .ts-expander > span,
-.tsv-list .ts-expander > span {
-  font-size: 11px;
+.ts-server-tree-item-leaf {
+    height: 26px !important;
+    min-height: 26px !important;
 }
 
-/* Global surface normalization: black/gray palette with no gradients. */
-body,
-html,
-#app,
-.tsv-window,
-.tsv-activity,
-.tsv-activity-primary,
-.tsv-activity-secondary,
-.tsv-sidebar,
-.tsv-body,
-.tsv-body-background,
-.tsv-header,
-.tsv-header-backdrop,
-.tsv-footer,
-.tsv-view,
-.tsv-view-banner,
-.tsv-view-background,
-.tsv-view-banner .tsv-view-background,
-.tsv-view-banner .tsv-view-content,
-.tsv-view-banner .tsv-view-accessory,
-.ts-card,
-.ts-widget,
-.ts-widget-wrapper,
-.ts-widget-container,
-.ts-context-menu,
-.ts-false-context-menu,
-.ts-connection-info-property,
-.ts-server-events-list,
-.ts-chat-widget-bg,
-.ts-chat-input-container,
-.ts-chat-input-container-content,
-.ts-chat-input-emoji-picker,
-.ts-chat-room-event-bubble,
-.ts-chat-room-event-detailed .ts-chat-room-event-bubble,
-.tsv-modal-overlay,
-.tsv-modal-overlay .tsv-modal-container,
-.tsv-modal-overlay .tsv-modal-overlay-inner {
-  background: var(--tsv-bg) !important;
-  background-image: none !important;
+.ts-server-tree-item-text {
+    font-size: 13px !important;
+    font-weight: 500 !important;
 }
 
-.tsv-header,
-.tsv-header-backdrop,
-.tsv-footer,
-.tsv-view-banner,
-.tsv-view-background,
-.ts-context-menu,
-.ts-false-context-menu,
-.ts-connection-info-property,
-.ts-server-events-list,
-.tsv-modal-overlay,
-.tsv-modal-overlay .tsv-modal-container,
-.ts-chat-room-event-detailed .ts-chat-room-event-bubble {
-  box-shadow: none !important;
+.ts-server-tree-icon {
+    transform: scale(0.85) !important;
+    width: 20px !important;
 }
 
-.tsv-view-banner::before,
-.tsv-view-banner::after,
-.tsv-view-background::before,
-.tsv-view-background::after,
-.tsv-header::before,
-.tsv-header::after,
-.tsv-footer::before,
-.tsv-footer::after,
-.ts-context-menu::before,
-.ts-false-context-menu::before,
-.ts-connection-info-property::before,
-.ts-server-events-list::before,
-.ts-chat-room-event-detailed .ts-chat-room-event-bubble::before,
-.tsv-modal-overlay::before {
-  background-image: none !important;
+/* --- Chat Image Optimization --- */
+.ts-chat-message-attachment-image,
+.ts-chat-message-attachment-image .display {
+    max-width: 800px !important;
+    max-height: 800px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
 }
 
-/* Chat bubble palette kept grayscale and readable. */
-.ts-chat-room-event-detailed:not(.ownclient) .ts-chat-room-event-bubble {
-  background: var(--tsv-chat-remote-bg) !important;
-  color: var(--tsv-chat-remote-font-color) !important;
+/* Sidebar and Header Protection */
+.tsv-sidebar .tsv-body-background,
+.tsv-activity-main .tsv-header,
+.ts-chat-widget-bg {
+    background: var(--tsv-bg) !important;
 }
 
-.ts-chat-room-event-detailed.ownclient .ts-chat-room-event-bubble {
-  background: var(--tsv-chat-self-bg) !important;
-  color: var(--tsv-chat-self-font-color) !important;
+/* Greyscale Scrollbars */
+::-webkit-scrollbar {
+    width: 6px !important;
 }
 
-/* Server header title area should not have its own background strip. */
-.ts-server-header .tsv-view-banner .tsv-view-content,
-.ts-server-header .tsv-view-banner .tsv-view-accessory,
-.tsv-header .tsv-bar.tsv-content-header-bar,
-.tsv-content-header-item {
-  background: transparent !important;
-  background-image: none !important;
+::-webkit-scrollbar-thumb {
+    background-color: #444444 !important;
+    border-radius: 3px !important;
 }
 
-/* Center the action icons in the active server header. */
-.ts-server-header .tsv-view-accessory button,
-.ts-server-header .tsv-view-accessory .ts-button,
-.ts-server-header .tsv-view-accessory .tsv-button,
-.ts-server-header .tsv-view-accessory [class*="button"] {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  line-height: 1 !important;
-}
-
-.ts-server-header .tsv-view-accessory button svg,
-.ts-server-header .tsv-view-accessory .ts-button svg,
-.ts-server-header .tsv-view-accessory .tsv-button svg,
-.ts-server-header .tsv-view-accessory [class*="button"] svg {
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-/* Compact chat input button spacing and padding. */
-.ts-chat-input-container button,
-.ts-chat-input-container .ts-button,
-.ts-chat-input-container .tsv-button,
-.ts-chat-input-action-button,
-.ts-chat-input-emoji-button {
-  padding: 0 4px !important;
-  margin: 0 1px !important;
-  min-height: 30px !important;
-  height: 30px !important;
-}
-
-/* Reduce icon button sizes in chat input bar. */
-.ts-chat-input-container [class*="button"] svg,
-.ts-chat-input-container button svg {
-  width: 16px !important;
-  height: 16px !important;
-}
-
-/* Center icons in navigation sidebar buttons. */
-.tsv-sidebar button,
-.tsv-sidebar [class*="button"],
-.ts-sidebar button,
-.ts-sidebar [class*="button"] {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.tsv-sidebar button svg,
-.ts-sidebar button svg,
-.tsv-sidebar [class*="button"] svg,
-.ts-sidebar [class*="button"] svg {
-  margin: 0 auto !important;
+::-webkit-scrollbar-track {
+    background-color: #141414 !important;
 }
