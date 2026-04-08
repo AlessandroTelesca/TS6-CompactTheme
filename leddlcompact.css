@@ -1,22 +1,40 @@
 /* Compact tree layout with black/gray palette and tight channel spacing. */
 
 :root {
-  --leddlcompact-base-bg: #121212;
-  --leddlcompact-panel-bg: #181818;
-  --leddlcompact-muted-bg: #222222;
+  --leddlcompact-base-bg: #141414;
+  --leddlcompact-panel-bg: #1e1e1e;
+  --leddlcompact-muted-bg: #242424;
   --leddlcompact-text: #d7d7d7;
   --leddlcompact-text-muted: #8a8a8a;
 
   /* TeamSpeak palette overrides (black/gray). */
-  --ts-primary-background: var(--leddlcompact-base-bg);
-  --tsv-bg: var(--leddlcompact-panel-bg);
-  --tsv-header-bg: #141414;
-  --tsv-shaded-bg: var(--leddlcompact-muted-bg);
-  --tsv-contrast-bg: #0a0a0a;
-  --ts-new-header-bg: #101010;
-  --tsv-side-bar-bg-gradient-bottom: var(--leddlcompact-panel-bg);
-  --ts-tree-channel-bg-start: var(--leddlcompact-panel-bg);
-  --ts-tree-channel-bg-end: var(--leddlcompact-panel-bg);
+  --ts-primary-background: #141414 !important;
+  --tsv-bg: #1e1e1e !important;
+  --tsv-header-bg: #161616 !important;
+  --tsv-shaded-bg: #242424 !important;
+  --tsv-contrast-bg: #0d0d0d !important;
+  --ts-new-header-bg: #121212 !important;
+  --tsv-deviant-bg: #1a1a1a !important;
+
+  --tsv-main-bg-gradient-start: #141414 !important;
+  --tsv-main-bg-gradient-end: #1e1e1e !important;
+  --tsv-side-bar-bg-gradient-bottom: #161616 !important;
+  --card-background: #222222 !important;
+  --tsv-servertree-bg-gradient: linear-gradient(25deg, #141414 0%, #1e1e1e 60%) !important;
+
+  --ts-tree-channel-bg-start: #1e1e1e !important;
+  --ts-tree-channel-bg-end: #222222 !important;
+  --ts-tree-badges-bg: #2a2a2a !important;
+  --spacer-bg-gradient-from: #252525 !important;
+  --spacer-bg-gradient-to: #2a2a2a !important;
+
+  --ts-chat-system-message-bg: #111111 !important;
+  --tsv-chat-widget-bg: #1a1a1a !important;
+  --tsv-chat-remote-bg: #333333 !important;
+  --tsv-chat-self-bg: #444444 !important;
+  --tsv-chat-remote-font-color: #e0e0e0 !important;
+  --tsv-chat-self-font-color: #ffffff !important;
+
   --tsv-font-color: var(--leddlcompact-text);
   --tsv-font-subtitle-color: var(--leddlcompact-text-muted);
   --tsv-tint: #8f8f8f;
