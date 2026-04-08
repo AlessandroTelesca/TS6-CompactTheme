@@ -390,3 +390,22 @@ html,
   background: transparent !important;
   background-image: none !important;
 }
+
+/* Compact chat input button spacing and padding. */
+.ts-chat-input-container button,
+.ts-chat-input-container .ts-button,
+.ts-chat-input-container .tsv-button,
+.ts-chat-input-action-button,
+.ts-chat-input-emoji-button {
+  padding: 0 4px !important;
+  margin: 0 1px !important;
+  min-height: 30px !important;
+  height: 30px !important;
+}
+
+/* Reduce icon button sizes in chat input bar. */
+.ts-chat-input-container [class*="button"] svg,
+.ts-chat-input-container button svg {
+  width: 16px !important;
+  height: 16px !important;
+}
