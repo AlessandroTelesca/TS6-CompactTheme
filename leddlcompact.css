@@ -5,6 +5,49 @@
   --leddlcompact-row-height: 20px;
   --leddlcompact-row-height-small: 18px;
   --leddlcompact-row-height-minimal: 14px;
+  --leddlcompact-row-overlap: 0px;
+
+  /* Virtual-list sizing values read by TeamSpeak layout code. */
+  --channel-height: 20px !important;
+  --channel-spacing: 0px !important;
+  --tsv-padding-v: 1px !important;
+  --tsv-padding-v-small: 0px !important;
+  --tsv-padding-v-minimal: 0px !important;
+  --ts-tree-channel-height-default: 20px !important;
+  --ts-tree-client-height-default: 20px !important;
+  --ts-tree-client-height-compact: 20px !important;
+  --ts-tree-spacer-height-default: 20px !important;
+  --tsv-row-height: 20px !important;
+  --tsv-row-height-small: 18px !important;
+  --tsv-row-height-minimal: 14px !important;
+}
+
+.ts-server-tree-scroller .tsv-virtual-list-item,
+.ts-server-tree-wrapper .tsv-virtual-list-item {
+  height: var(--ts-tree-channel-height-default) !important;
+  min-height: var(--ts-tree-channel-height-default) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: stretch !important;
+}
+
+.ts-server-tree-item-leaf,
+.ts-server-tree-item-leaf.channel,
+.ts-server-tree-item-leaf.client,
+.ts-server-tree-item-leaf.spacer {
+  height: var(--ts-tree-channel-height-default) !important;
+  min-height: var(--ts-tree-channel-height-default) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.ts-server-tree-item-node-content,
+.ts-server-tree-item-leaf .tsv-item-container,
+.ts-server-tree-item-leaf .tsv-item {
+  min-height: var(--ts-tree-channel-height-default) !important;
+  height: var(--ts-tree-channel-height-default) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .ts-sidebar .ts-bookmark-list,
@@ -33,7 +76,87 @@
 .tsv-server-tree .channel,
 .tsv-server-tree .client {
   margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   min-height: var(--tsv-row-height);
+}
+
+.ts-server-tree .ts-server-tree-item,
+.ts-server-tree .ts-server-tree-item-leaf,
+.tsv-server-tree .ts-server-tree-item,
+.tsv-server-tree .ts-server-tree-item-leaf,
+.ts-server-tree .tsv-item,
+.tsv-server-tree .tsv-item,
+.ts-server-tree .tsv-item-container,
+.tsv-server-tree .tsv-item-container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.ts-server-tree .ts-server-tree-item + .ts-server-tree-item,
+.tsv-server-tree .ts-server-tree-item + .ts-server-tree-item,
+.ts-server-tree .ts-server-tree-item-leaf + .ts-server-tree-item-leaf,
+.tsv-server-tree .ts-server-tree-item-leaf + .ts-server-tree-item-leaf,
+.ts-server-tree li + li,
+.tsv-server-tree li + li,
+.ts-server-tree .channel + .channel,
+.ts-server-tree .channel + .client,
+.ts-server-tree .client + .channel,
+.ts-server-tree .client + .client,
+.tsv-server-tree .channel + .channel,
+.tsv-server-tree .channel + .client,
+.tsv-server-tree .client + .channel,
+.tsv-server-tree .client + .client,
+.ts-server-tree .tsv-item + .tsv-item,
+.tsv-server-tree .tsv-item + .tsv-item {
+  margin-top: calc(var(--leddlcompact-row-overlap) * -1) !important;
+}
+
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item:not(:last-child),
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group.has-children,
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group .tsv-item:not(:first-child),
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .ts-server-tree-item-leaf {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item-group.has-children {
+  padding-bottom: 0 !important;
+}
+
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item {
+  min-height: var(--ts-tree-channel-height-default) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.channel .tsv-item-highlight,
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.client .tsv-item-highlight,
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.client .tsv-item-highlight-extra,
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.spacer .tsv-item-highlight,
+.ts-server-tree-wrapper .ts-server-tree-item-leaf.spacer .tsv-item-highlight-extra {
+  top: 0 !important;
+  bottom: 0 !important;
+}
+
+.ts-server-tree-wrapper .ts-server-tree-channel-info,
+.ts-server-tree-wrapper .ts-server-tree-client-info {
+  margin-bottom: 0 !important;
+}
+
+/* Keep compact spacing, but make channel rows square (no pill corners). */
+.ts-server-tree-item-leaf.channel .tsv-item-highlight,
+.ts-server-tree-item-leaf.channel .tsv-item-highlight-extra,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-no-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image,
+.ts-server-tree-item-leaf.channel .ts-server-tree-item-background-image-full {
+  border-radius: 0 !important;
+}
+
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .tsv-item + .tsv-item,
+.ts-server-tree-wrapper .tsv-activities:not(.tsv-location-navigator .tsv-activities) .ts-server-tree-item-leaf + .ts-server-tree-item-leaf {
+  margin-top: calc(var(--leddlcompact-row-overlap) * -1) !important;
 }
 
 .ts-server-tree .tsv-item,
