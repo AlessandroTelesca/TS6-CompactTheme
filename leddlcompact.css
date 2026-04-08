@@ -381,3 +381,12 @@ html,
   background: var(--tsv-chat-self-bg) !important;
   color: var(--tsv-chat-self-font-color) !important;
 }
+
+/* Server header title area should not have its own background strip. */
+.ts-server-header .tsv-view-banner .tsv-view-content,
+.ts-server-header .tsv-view-banner .tsv-view-accessory,
+.tsv-header .tsv-bar.tsv-content-header-bar,
+.tsv-content-header-item {
+  background: transparent !important;
+  background-image: none !important;
+}
