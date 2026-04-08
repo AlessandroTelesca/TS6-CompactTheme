@@ -20,13 +20,13 @@
   --tsv-main-bg-gradient-end: #1e1e1e !important;
   --tsv-side-bar-bg-gradient-bottom: #161616 !important;
   --card-background: #222222 !important;
-  --tsv-servertree-bg-gradient: linear-gradient(25deg, #141414 0%, #1e1e1e 60%) !important;
+  --tsv-servertree-bg-gradient: #1e1e1e !important;
 
   --ts-tree-channel-bg-start: #1e1e1e !important;
   --ts-tree-channel-bg-end: #222222 !important;
   --ts-tree-badges-bg: #2a2a2a !important;
-  --spacer-bg-gradient-from: #252525 !important;
-  --spacer-bg-gradient-to: #2a2a2a !important;
+  --spacer-bg-gradient-from: #1e1e1e !important;
+  --spacer-bg-gradient-to: #1e1e1e !important;
 
   --ts-chat-system-message-bg: #111111 !important;
   --tsv-chat-widget-bg: #1a1a1a !important;
@@ -296,4 +296,88 @@
 .ts-sidebar .ts-bookmark-list .ts-expander > span,
 .tsv-list .ts-expander > span {
   font-size: 11px;
+}
+
+/* Global surface normalization: black/gray palette with no gradients. */
+body,
+html,
+#app,
+.tsv-window,
+.tsv-activity,
+.tsv-activity-primary,
+.tsv-activity-secondary,
+.tsv-sidebar,
+.tsv-body,
+.tsv-body-background,
+.tsv-header,
+.tsv-header-backdrop,
+.tsv-footer,
+.tsv-view,
+.tsv-view-banner,
+.tsv-view-background,
+.tsv-view-banner .tsv-view-background,
+.tsv-view-banner .tsv-view-content,
+.tsv-view-banner .tsv-view-accessory,
+.ts-card,
+.ts-widget,
+.ts-widget-wrapper,
+.ts-widget-container,
+.ts-context-menu,
+.ts-false-context-menu,
+.ts-connection-info-property,
+.ts-server-events-list,
+.ts-chat-widget-bg,
+.ts-chat-input-container,
+.ts-chat-input-container-content,
+.ts-chat-input-emoji-picker,
+.ts-chat-room-event-bubble,
+.ts-chat-room-event-detailed .ts-chat-room-event-bubble,
+.tsv-modal-overlay,
+.tsv-modal-overlay .tsv-modal-container,
+.tsv-modal-overlay .tsv-modal-overlay-inner {
+  background: var(--tsv-bg) !important;
+  background-image: none !important;
+}
+
+.tsv-header,
+.tsv-header-backdrop,
+.tsv-footer,
+.tsv-view-banner,
+.tsv-view-background,
+.ts-context-menu,
+.ts-false-context-menu,
+.ts-connection-info-property,
+.ts-server-events-list,
+.tsv-modal-overlay,
+.tsv-modal-overlay .tsv-modal-container,
+.ts-chat-room-event-detailed .ts-chat-room-event-bubble {
+  box-shadow: none !important;
+}
+
+.tsv-view-banner::before,
+.tsv-view-banner::after,
+.tsv-view-background::before,
+.tsv-view-background::after,
+.tsv-header::before,
+.tsv-header::after,
+.tsv-footer::before,
+.tsv-footer::after,
+.ts-context-menu::before,
+.ts-false-context-menu::before,
+.ts-connection-info-property::before,
+.ts-server-events-list::before,
+.ts-chat-room-event-detailed .ts-chat-room-event-bubble::before,
+.tsv-modal-overlay::before {
+  background-image: none !important;
+}
+
+/* Chat bubble palette kept grayscale and readable. */
+.ts-chat-room-event-detailed:not(.ownclient) .ts-chat-room-event-bubble {
+  background: var(--tsv-chat-remote-bg) !important;
+  color: var(--tsv-chat-remote-font-color) !important;
+}
+
+.ts-chat-room-event-detailed.ownclient .ts-chat-room-event-bubble {
+  background: var(--tsv-chat-self-bg) !important;
+  color: var(--tsv-chat-self-font-color) !important;
 }
